@@ -3,6 +3,7 @@ import crispy from "./assets/crispy.jpg";
 import drapzy from "./assets/drapzy.jpg";
 import nyrrox from "./assets/nyrrox.jpg";
 import "./styles.css";
+import { FaXTwitter, FaTwitch } from "react-icons/fa6";
 
 /* ================= NAVBAR ================= */
 
@@ -118,7 +119,7 @@ export default function App() {
       <section id="collab" className="section">
 
         <h2>Collaboration</h2>
-        <p className="collab-subtitle">Joueurs du jour</p>
+      
 
         <div className="collab-grid">
 
@@ -154,12 +155,40 @@ export default function App() {
 
       </section>
 
-      {/* ================= RÉSEAUX ================= */}
+    {/* ================= RÉSEAUX ================= */}
 
-      <section id="social" className="section">
-        <h2>Réseaux</h2>
-        <p>Instagram — TikTok — YouTube — Discord</p>
-      </section>
+<section id="social" className="section">
+
+  <h2>Réseaux</h2>
+  <p className="collab-subtitle">Retrouve Coach Crispy en ligne</p>
+
+  <div className="social-grid">
+
+    {/* TWITTER / X */}
+    <a
+      href="https://x.com/coachlecrispy"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="social-card"
+    >
+      <FaXTwitter className="social-icon" />
+      <span>Twitter / X</span>
+    </a>
+
+    {/* TWITCH */}
+    <a
+      href="https://www.twitch.tv/coachlecrispy/about"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="social-card"
+    >
+      <FaTwitch className="social-icon" />
+      <span>Twitch</span>
+    </a>
+
+  </div>
+
+</section>
 
       <footer>© 2026 Coach Crispy — Tous droits réservés</footer>
 

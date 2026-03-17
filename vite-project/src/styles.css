@@ -1,22 +1,41 @@
+/* ===================================================== */
+/* ======================= RESET ======================== */
+/* ===================================================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /* 🚫 PAS DE SÉLECTION TEXTE */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
+
+/* ===================================================== */
+/* ======================== BODY ======================== */
+/* ===================================================== */
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #020617;
+  background: #020617; /* bleu spatial profond */
   color: white;
   overflow-x: hidden;
 }
+
+/* ===================================================== */
+/* ===================== CONTAINER ====================== */
+/* ===================================================== */
 
 .main-container {
   position: relative;
   min-height: 100vh;
 }
 
-/* PARTICULES */
+/* ===================================================== */
+/* ================= PARTICULES CANVAS ================= */
+/* ===================================================== */
 
 .particles {
   position: fixed;
@@ -27,7 +46,9 @@ body {
   z-index: 0;
 }
 
-/* NAVBAR */
+/* ===================================================== */
+/* ======================= NAVBAR ======================= */
+/* ===================================================== */
 
 .navbar {
   position: fixed;
@@ -46,8 +67,11 @@ body {
 
   border-bottom: 1px solid rgba(255,255,255,0.08);
   overflow: hidden;
+
   z-index: 10;
 }
+
+/* LOGO */
 
 .logo {
   font-size: 1.6rem;
@@ -55,6 +79,8 @@ body {
   color: #f97316;
   z-index: 2;
 }
+
+/* LIENS */
 
 .nav-links {
   list-style: none;
@@ -67,18 +93,39 @@ body {
   color: white;
   text-decoration: none;
   transition: 0.3s;
+  position: relative;
 }
 
 .nav-links a:hover {
   color: #f97316;
 }
 
-/* ÉTOILES NAVBAR */
+/* Soulignement */
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #f97316;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ===================================================== */
+/* ================= ÉTOILES NAVBAR ===================== */
+/* ===================================================== */
 
 .nav-stars {
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
 }
 
 .nav-stars span {
@@ -88,7 +135,10 @@ body {
   background: #f97316;
   border-radius: 50%;
   box-shadow: 0 0 6px #f97316;
-  animation: starMove linear infinite, starTwinkle ease-in-out infinite;
+
+  animation:
+    starMove linear infinite,
+    starTwinkle ease-in-out infinite;
 }
 
 .nav-stars span:nth-child(1){top:20%;left:-10%;animation-duration:12s,2s;}
@@ -99,15 +149,17 @@ body {
 
 @keyframes starMove {
   from { transform: translateX(0); }
-  to { transform: translateX(120vw); }
+  to   { transform: translateX(120vw); }
 }
 
 @keyframes starTwinkle {
   0%,100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.8); }
+  50%     { opacity: 1; transform: scale(1.8); }
 }
 
-/* SECTIONS */
+/* ===================================================== */
+/* ======================= SECTIONS ===================== */
+/* ===================================================== */
 
 .section {
   max-width: 1100px;
@@ -125,29 +177,53 @@ body {
   align-items: center;
 }
 
-/* PHOTO PROFIL */
+/* ===================================================== */
+/* ===================== PHOTO PROFIL =================== */
+/* ===================================================== */
 
 .profile-pic {
   width: 170px;
   height: 170px;
   object-fit: cover;
+
   border-radius: 50%;
   border: 3px solid #f97316;
+
   margin-bottom: 25px;
-  box-shadow: 0 0 25px rgba(249,115,22,0.7);
+
+  box-shadow:
+    0 0 25px rgba(249,115,22,0.7),
+    0 0 60px rgba(249,115,22,0.3);
 }
 
-/* TEXTES */
+/* ===================================================== */
+/* ======================= TEXTES ======================= */
+/* ===================================================== */
 
-h1 { font-size: 3rem; margin-bottom: 15px; }
+h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
 
-h2 { font-size: 2.2rem; margin-bottom: 20px; color: #f97316; }
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #f97316;
+}
 
-.subtitle { font-size: 1.25rem; opacity: 0.9; }
+.subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
 
-.collab-subtitle { margin-bottom: 40px; opacity: 0.8; }
+.collab-subtitle {
+  margin-bottom: 40px;
+  opacity: 0.8;
+}
 
-/* GRID COLLAB */
+/* ===================================================== */
+/* ================= COLLABORATION ====================== */
+/* ===================================================== */
 
 .collab-grid {
   display: flex;
@@ -156,14 +232,21 @@ h2 { font-size: 2.2rem; margin-bottom: 20px; color: #f97316; }
   flex-wrap: wrap;
 }
 
+.player-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .player-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: blur(10px);
+
   padding: 30px 25px;
   border-radius: 18px;
   width: 220px;
-  transition: 0.3s;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .player-card:hover {
@@ -175,21 +258,102 @@ h2 { font-size: 2.2rem; margin-bottom: 20px; color: #f97316; }
   width: 110px;
   height: 110px;
   object-fit: cover;
+
   border-radius: 50%;
   border: 2px solid #f97316;
+
   margin-bottom: 15px;
+
   box-shadow: 0 0 20px rgba(249,115,22,0.6);
 }
 
-.team { opacity: 0.75; }
+.team {
+  opacity: 0.75;
+}
+
+/* ===================================================== */
+/* ======================= RÉSEAUX ====================== */
+/* ===================================================== */
+
+.social-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  padding: 25px 30px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+
+  text-decoration: none;
+  color: white;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(249,115,22,0.25);
+}
+
+.social-icon {
+  font-size: 2.4rem;
+  color: #f97316;
+  text-shadow: 0 0 12px rgba(249,115,22,0.8);
+}
+
+.social-card span {
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+
+/* ===================================================== */
+/* ======================== FOOTER ====================== */
+/* ===================================================== */
 
 footer {
   text-align: center;
   padding: 40px;
   opacity: 0.6;
+  position: relative;
+  z-index: 1;
 }
 
-.player-card-link {
-  text-decoration: none;
-  color: inherit;
+/* ===================================================== */
+/* ======================== MOBILE ====================== */
+/* ===================================================== */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .section {
+    padding: 80px 15px;
+  }
+
+  .profile-pic {
+    width: 140px;
+    height: 140px;
+  }
 }
