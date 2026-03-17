@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import crispy from "./assets/crispy.jpg";
+import drapzy from "./assets/drapzy.jpg";
+import nyrrox from "./assets/nyrrox.jpg";
 import "./styles.css";
 
 /* ================= NAVBAR ================= */
@@ -16,7 +18,6 @@ function Navbar() {
         <li><a href="#social">Réseaux</a></li>
       </ul>
 
-      {/* ⭐ ÉTOILES NAVBAR */}
       <div className="nav-stars">
         <span></span>
         <span></span>
@@ -54,8 +55,6 @@ export default function App() {
       mouse.y = e.clientY;
     });
 
-    /* Création particules */
-
     for (let i = 0; i < 120; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -65,8 +64,6 @@ export default function App() {
         size: Math.random() * 2 + 1,
       });
     }
-
-    /* Animation */
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -78,7 +75,6 @@ export default function App() {
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-        /* interaction souris */
         if (mouse.x) {
           const dx = mouse.x - p.x;
           const dy = mouse.y - p.y;
@@ -96,26 +92,6 @@ export default function App() {
         ctx.fill();
       });
 
-      /* lignes entre particules */
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            ctx.strokeStyle = "rgba(249,115,22,0.15)";
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
       requestAnimationFrame(draw);
     };
 
@@ -125,7 +101,6 @@ export default function App() {
   return (
     <div className="main-container">
 
-      {/* 🌌 BACKGROUND PARTICULES */}
       <canvas ref={canvasRef} className="particles"></canvas>
 
       <Navbar />
@@ -133,29 +108,50 @@ export default function App() {
       {/* ================= HOME ================= */}
 
       <section id="home" className="section hero">
-
-        <img
-          src={crispy}
-          alt="Coach Crispy"
-          className="profile-pic"
-        />
-
+        <img src={crispy} alt="Coach Crispy" className="profile-pic" />
         <h1>Coach Crispy</h1>
-
-        <p className="subtitle">
-          Fortnite Coach for One Prodige
-        </p>
-
+        <p className="subtitle">Fortnite Coach for One Prodige</p>
       </section>
 
       {/* ================= COLLAB ================= */}
 
       <section id="collab" className="section">
+
         <h2>Collaboration</h2>
-        <p>
-          Coaching personnalisé pour améliorer ton niveau
-          et atteindre le top.
-        </p>
+        <p className="collab-subtitle">Joueurs du jour</p>
+
+        <div className="collab-grid">
+
+          {/* ===== DRAPZY ===== */}
+          <a
+            href="https://x.com/drapzybot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="player-card-link"
+          >
+            <div className="player-card">
+              <img src={drapzy} alt="Drapzy" className="player-pic" />
+              <h3>Drapzy</h3>
+              <p className="team">Haikoo Esport</p>
+            </div>
+          </a>
+
+          {/* ===== NYRROX ===== */}
+          <a
+            href="https://x.com/gotstii"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="player-card-link"
+          >
+            <div className="player-card">
+              <img src={nyrrox} alt="Nyrrox" className="player-pic" />
+              <h3>Nyrrox</h3>
+              <p className="team">R4C Esport</p>
+            </div>
+          </a>
+
+        </div>
+
       </section>
 
       {/* ================= RÉSEAUX ================= */}
@@ -164,8 +160,6 @@ export default function App() {
         <h2>Réseaux</h2>
         <p>Instagram — TikTok — YouTube — Discord</p>
       </section>
-
-      {/* ================= FOOTER ================= */}
 
       <footer>© 2026 Coach Crispy — Tous droits réservés</footer>
 
