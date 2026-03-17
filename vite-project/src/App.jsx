@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import crispy from "./assets/crispy.jpg";
 import "./styles.css";
 
 /* ================= NAVBAR ================= */
@@ -53,7 +54,7 @@ export default function App() {
       mouse.y = e.clientY;
     });
 
-    /* ===== Création particules ===== */
+    /* Création particules */
 
     for (let i = 0; i < 120; i++) {
       particles.push({
@@ -65,17 +66,15 @@ export default function App() {
       });
     }
 
-    /* ===== Animation ===== */
+    /* Animation */
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
-
         p.x += p.vx;
         p.y += p.vy;
 
-        /* rebond bord */
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
@@ -91,14 +90,13 @@ export default function App() {
           }
         }
 
-        /* dessin étoile */
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = "#f97316";
         ctx.fill();
       });
 
-      /* lignes entre particules proches */
+      /* lignes entre particules */
 
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -127,7 +125,7 @@ export default function App() {
   return (
     <div className="main-container">
 
-      {/* 🌌 PARTICULES BACKGROUND */}
+      {/* 🌌 BACKGROUND PARTICULES */}
       <canvas ref={canvasRef} className="particles"></canvas>
 
       <Navbar />
@@ -135,9 +133,19 @@ export default function App() {
       {/* ================= HOME ================= */}
 
       <section id="home" className="section hero">
-        <h1>Coach Performance & Mindset</h1>
-        <p>Une transformation puissante, moderne et durable</p>
-        <button>Réserver un appel gratuit</button>
+
+        <img
+          src={crispy}
+          alt="Coach Crispy"
+          className="profile-pic"
+        />
+
+        <h1>Coach Crispy</h1>
+
+        <p className="subtitle">
+          Fortnite Coach for One Prodige
+        </p>
+
       </section>
 
       {/* ================= COLLAB ================= */}
@@ -145,8 +153,8 @@ export default function App() {
       <section id="collab" className="section">
         <h2>Collaboration</h2>
         <p>
-          Programme personnalisé pour t’aider à atteindre tes objectifs
-          physiques, mentaux ou professionnels.
+          Coaching personnalisé pour améliorer ton niveau
+          et atteindre le top.
         </p>
       </section>
 

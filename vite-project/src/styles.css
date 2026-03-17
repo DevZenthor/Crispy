@@ -1,4 +1,6 @@
-/* ===== RESET ===== */
+/* ===================================================== */
+/* ======================= RESET ======================== */
+/* ===================================================== */
 
 * {
   margin: 0;
@@ -6,16 +8,20 @@
   box-sizing: border-box;
 }
 
-/* ===== BODY ===== */
+/* ===================================================== */
+/* ======================== BODY ======================== */
+/* ===================================================== */
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #020617; /* bleu spatial */
+  background: #020617; /* bleu spatial profond */
   color: white;
   overflow-x: hidden;
 }
 
-/* ===== CONTAINER ===== */
+/* ===================================================== */
+/* ===================== CONTAINER ====================== */
+/* ===================================================== */
 
 .main-container {
   position: relative;
@@ -24,7 +30,9 @@ body {
   overflow: hidden;
 }
 
-/* ===== PARTICULES BACKGROUND ===== */
+/* ===================================================== */
+/* ================= PARTICULES CANVAS ================= */
+/* ===================================================== */
 
 .particles {
   position: fixed;
@@ -35,9 +43,9 @@ body {
   z-index: 0;
 }
 
-/* ========================================================= */
-/* ===================== NAVBAR ============================= */
-/* ========================================================= */
+/* ===================================================== */
+/* ======================= NAVBAR ======================= */
+/* ===================================================== */
 
 .navbar {
   position: fixed;
@@ -56,12 +64,12 @@ body {
 
   border-bottom: 1px solid rgba(255,255,255,0.08);
 
-  overflow: hidden; /* IMPORTANT pour les étoiles */
+  overflow: hidden;
 
   z-index: 10;
 }
 
-/* ===== LOGO ===== */
+/* LOGO */
 
 .logo {
   font-size: 1.6rem;
@@ -71,7 +79,7 @@ body {
   z-index: 2;
 }
 
-/* ===== LIENS ===== */
+/* LIENS */
 
 .nav-links {
   list-style: none;
@@ -92,7 +100,7 @@ body {
   color: #f97316;
 }
 
-/* Soulignement futuriste */
+/* Soulignement */
 
 .nav-links a::after {
   content: "";
@@ -109,11 +117,9 @@ body {
   width: 100%;
 }
 
-/* ========================================================= */
-/* =================== ÉTOILES NAVBAR ======================= */
-/* ========================================================= */
-
-/* Conteneur étoiles */
+/* ===================================================== */
+/* ================= ÉTOILES NAVBAR ===================== */
+/* ===================================================== */
 
 .nav-stars {
   position: absolute;
@@ -122,22 +128,20 @@ body {
   pointer-events: none;
 }
 
-/* Chaque étoile */
-
 .nav-stars span {
   position: absolute;
   width: 2px;
   height: 2px;
   background: #f97316;
   border-radius: 50%;
-
   box-shadow: 0 0 6px #f97316;
 
-  animation: starMove linear infinite,
-             starTwinkle ease-in-out infinite;
+  animation:
+    starMove linear infinite,
+    starTwinkle ease-in-out infinite;
 }
 
-/* Positions + vitesses différentes */
+/* positions */
 
 .nav-stars span:nth-child(1) {
   top: 20%;
@@ -169,33 +173,23 @@ body {
   animation-duration: 20s, 2.8s;
 }
 
-/* ===== Animation déplacement ===== */
+/* déplacement */
 
 @keyframes starMove {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(120vw);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(120vw); }
 }
 
-/* ===== Animation scintillement ===== */
+/* scintillement */
 
 @keyframes starTwinkle {
-  0%,100% {
-    opacity: 0.2;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.8);
-  }
+  0%,100% { opacity: 0.2; transform: scale(1); }
+  50%     { opacity: 1; transform: scale(1.8); }
 }
 
-/* ========================================================= */
-/* ===================== CONTENU ============================ */
-/* ========================================================= */
+/* ===================================================== */
+/* ======================= SECTIONS ===================== */
+/* ===================================================== */
 
 .section {
   max-width: 1100px;
@@ -208,13 +202,43 @@ body {
 
 .hero {
   padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ===== TITRES ===== */
+/* ===================================================== */
+/* ===================== PHOTO PROFIL =================== */
+/* ===================================================== */
+
+.profile-pic {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+
+  border: 3px solid #f97316;
+
+  margin-bottom: 25px;
+
+  box-shadow:
+    0 0 25px rgba(249,115,22,0.7),
+    0 0 60px rgba(249,115,22,0.3);
+
+  transition: transform 0.4s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.06);
+}
+
+/* ===================================================== */
+/* ======================= TEXTES ======================= */
+/* ===================================================== */
 
 h1 {
   font-size: 3rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 h2 {
@@ -223,19 +247,27 @@ h2 {
   color: #f97316;
 }
 
+.subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
 p {
   font-size: 1.1rem;
   opacity: 0.9;
 }
 
-/* ===== BOUTON ===== */
+/* ===================================================== */
+/* ======================== BUTTON ====================== */
+/* ===================================================== */
 
 button {
   background: #f97316;
   color: white;
   border: none;
-  padding: 14px 30px;
-  margin-top: 25px;
+  padding: 14px 32px;
+  margin-top: 10px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -248,7 +280,9 @@ button:hover {
   box-shadow: 0 20px 50px rgba(249,115,22,0.5);
 }
 
-/* ===== FOOTER ===== */
+/* ===================================================== */
+/* ======================== FOOTER ====================== */
+/* ===================================================== */
 
 footer {
   text-align: center;
@@ -258,7 +292,9 @@ footer {
   z-index: 1;
 }
 
-/* ===== MOBILE ===== */
+/* ===================================================== */
+/* ======================== MOBILE ====================== */
+/* ===================================================== */
 
 @media (max-width: 768px) {
 
@@ -276,5 +312,10 @@ footer {
 
   .section {
     padding: 80px 15px;
+  }
+
+  .profile-pic {
+    width: 140px;
+    height: 140px;
   }
 }
